@@ -12,7 +12,7 @@ export class NewProductComponent implements OnInit{
 
   productFormGroup! : FormGroup;
 
-  constructor(private fb : FormBuilder, private prodService : ProductService, private router : Router) {
+  constructor(private fb : FormBuilder, public prodService : ProductService, private router : Router) {
   }
   ngOnInit(): void {
     this.productFormGroup= this.fb.group({
@@ -31,14 +31,5 @@ export class NewProductComponent implements OnInit{
     });
   }
 
-  getErrorMessage(fieldName: string, error: ValidationErrors) {
-    if(error["required"])
-      return fieldName + " is required";
-    else if(error["minlength"])
-      return fieldName + " should have at least " + error["minlength"]["requiredLength"] + " Characteres";
-    else if(error["min"])
-      return "The min value for "+ fieldName +" is "+ error["min"]["min"];
-    else
-      return "";
-  }
+
 }

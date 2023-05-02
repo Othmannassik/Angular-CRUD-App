@@ -8,6 +8,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { LoginComponent } from './components/login/login.component';
 import { TemplateComponent } from './components/template/template.component';
 import { NewProductComponent } from './components/new-product/new-product.component';
+import { EditProductComponent } from './components/edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { NewProductComponent } from './components/new-product/new-product.compon
     ProductsComponent,
     LoginComponent,
     TemplateComponent,
-    NewProductComponent
+    NewProductComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,

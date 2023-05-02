@@ -5,6 +5,7 @@ import {LoginComponent} from "./components/login/login.component";
 import {TemplateComponent} from "./components/template/template.component";
 import {AuthenticationGuard} from "./guards/authentication/authentication.guard";
 import {NewProductComponent} from "./components/new-product/new-product.component";
+import {EditProductComponent} from "./components/edit-product/edit-product.component";
 
 const routes: Routes = [
   {path : "" , component : LoginComponent},
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path : "admin" , component : TemplateComponent, canActivate : [AuthenticationGuard],
     children : [
       {path : "products" , component : ProductsComponent},
-      {path : "newProduct" , component : NewProductComponent}
+      {path : "newProduct" , component : NewProductComponent},
+      {path : "editProduct/:id" , component : EditProductComponent}
     ]}
 ];
 
