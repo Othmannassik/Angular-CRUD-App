@@ -4,6 +4,9 @@
       {{errorMessage}}
     </div>
   </ng-template>
+  <nav *ngIf="authService.hasRole('ADMIN')" class="mb-3">
+    <button class="btn btn-primary" (click)="handleNewProduct()">New Product</button>
+  </nav>
   <div class="card" *ngIf="products; else errors">
     <div class="card-header">Product List</div>
     <div class="card-body">
