@@ -19,7 +19,7 @@
       <table class="table">
         <thead>
           <tr>
-            <th>ID</th> <th>Name</th> <th>Price</th> <th>Status</th> <th>Action</th>
+            <th>ID</th> <th>Name</th> <th>Price</th> <th>Status</th> <th *ngIf="authService.hasRole('ADMIN')">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -27,13 +27,19 @@
             <td>{{p.id}}</td>
             <td>{{p.name}}</td>
             <td>{{p.price}}</td>
-            <td>
+            <td *ngIf="authService.hasRole('ADMIN'); else userPromo">
               <button (click)="handlePromotion(p)" [class]="p.promotion ? 'btn-danger' : 'btn-outline-success'" class="btn">
                 <span *ngIf="p.promotion">Promo Off</span>
                 <span *ngIf="!p.promotion">Promo On</span>
               </button>
             </td>
-            <td>
+            <ng-template #userPromo>
+              <td [class]="!p.promotion ? 'text-black' : 'text-success'">
+                <span *ngIf="p.promotion">Promoted</span>
+                <span *ngIf="!p.promotion">Not Promoted</span>
+              </td>
+            </ng-template>
+            <td *ngIf="authService.hasRole('ADMIN')">
               <button (click)="handleDeleteProduct(p)" class="btn btn-danger">
                 <i class="bi bi-trash"></i>
               </button>
